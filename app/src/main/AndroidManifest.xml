@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.criminal_code.test_mvp">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/image11"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/image11"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Test_MVP">
+        <activity android:name=".MainActivity4">
+        </activity>
+        <activity
+            android:name=".MainActivity3"
+            android:screenOrientation="portrait">
+
+
+
+        </activity>
+
+        <activity
+            android:name=".MainActivity2"
+            android:screenOrientation="portrait">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
+
+
+
+        </activity>
+    </application>
+
+</manifest>
