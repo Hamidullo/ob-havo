@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import com.squareup.picasso.Picasso
+import java.sql.DriverManager.println
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -21,9 +22,7 @@ class MainActivity4 : AppCompatActivity() {
         findViewById<TextView>(R.id.tempF).text = intent.getBundleExtra("all")!!.getDouble("temp").toString() + "°C"
         findViewById<TextView>(R.id.temp_maxF).text = "Max Temp: " + intent.getBundleExtra("all")!!.getDouble("tempmax").toString() + " °C"
         findViewById<TextView>(R.id.temp_minF).text = "Max Temp: " + intent.getBundleExtra("all")!!.getDouble("tempmin").toString() + " °C"
-        findViewById<TextView>(R.id.statusF).text = intent.getBundleExtra("all")!!.getString("description")!!.capitalize(
-            Locale.ROOT
-        )
+        findViewById<TextView>(R.id.statusF).text = intent.getBundleExtra("all")!!.getString("description")//!!.capitalize(Locale.ROOT)
         findViewById<TextView>(R.id.sunriseF).text =
             SimpleDateFormat("hh:mm a", Locale.ENGLISH)
                 .format(Date(intent.getBundleExtra("all")!!.getLong("sunrise")*1000))

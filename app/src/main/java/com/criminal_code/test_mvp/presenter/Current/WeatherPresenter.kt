@@ -44,6 +44,7 @@ class WeatherPresenter(): MvpPresenter<IWeatherView>() {
 
         dataObservable!!.subscribeOn(Schedulers.newThread())
             .observeOn(AndroidSchedulers.mainThread())
+            .doOnError { viewState.setEmptyResponseText("Not Found!") }
             .subscribe { weatherCurrentData: WeatherCurrentData? ->
                 dataWeather = weatherCurrentData!!
                 val weathers: MutableList<ListWeather?> = ArrayList()

@@ -11,6 +11,7 @@ import com.criminal_code.test_mvp.model.current.entity.WeatherCurrentData
 import com.criminal_code.test_mvp.model.item.ItemWeather
 import com.criminal_code.test_mvp.model.item.entity.ItemWeatherData
 import com.criminal_code.test_mvp.view.IItemWeatherView
+import rx.Observable
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 import java.util.ArrayList
@@ -35,11 +36,13 @@ class ItemWeatherPresenter() : MvpPresenter<IItemWeatherView>() {
 
         dataObservable!!.subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
+                .onErrorResumeNext(Observable.empty())
+                .doOnError { viewState.errorMessage("Not Found!") }
                 .subscribe { weatherItemData: ItemWeatherData? ->
-
                     viewState.hideLoadingIndicator()
                     when {
-                        weatherItemData!!.name == null -> viewState.errorMessage("There is no information")
+                        weatherItemData == null -> viewState.errorMessage("Not Found!")
+                        weatherItemData.name == null -> viewState.errorMessage("There is no information")
                         isUpdate -> viewState.setDataView(weatherItemData)
                         else -> viewState.setDataView(weatherItemData)
                     }
@@ -55,7 +58,8 @@ class ItemWeatherPresenter() : MvpPresenter<IItemWeatherView>() {
                 .subscribe { weatherItemData: ItemWeatherData? ->
                     viewState.hideLoadingIndicator()
                     when {
-                        weatherItemData!!.name == null -> viewState.errorMessage("There is no information")
+                        weatherItemData == null -> viewState.errorMessage("Not Found!")
+                        weatherItemData.name == null -> viewState.errorMessage("There is no information")
                         isUpdate -> viewState.setDataView(weatherItemData)
                         else -> viewState.setDataView(weatherItemData)
                     }
@@ -64,3 +68,4 @@ class ItemWeatherPresenter() : MvpPresenter<IItemWeatherView>() {
 
 
 }
+ class Result<T>(val data: T, val error: Throwable)

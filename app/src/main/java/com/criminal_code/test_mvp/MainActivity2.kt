@@ -68,7 +68,7 @@ class MainActivity2 : MvpAppCompatActivity(),IWeatherView {
         _weathers = weathers as List<ListWeather>?
         _adapter = Adapter(applicationContext, _weathers)
         __weathersListView!!.adapter = _adapter
-        __weathersListView!!.dividerHeight = 2
+        __weathersListView!!.dividerHeight = 10
     }
 
     override fun updateWeatherListView(earthquakes: List<ListWeather?>?) {

@@ -27,6 +27,7 @@ import com.criminal_code.test_mvp.view.IItemWeatherView
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.squareup.picasso.Picasso
+import java.sql.DriverManager.println
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -51,7 +52,7 @@ class MainActivity3 : MvpAppCompatActivity(), IItemWeatherView {
                 ContextCompat
                         .getColor(this, R.color.purple_500), PorterDuff.Mode.MULTIPLY)
 
-        findViewById<RelativeLayout>(R.id.mainContainer).visibility = View.GONE
+        findViewById<LinearLayout>(R.id.mainContainer).visibility = View.GONE
         findViewById<TextView>(R.id.errorText).visibility = View.GONE
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
@@ -131,7 +132,7 @@ class MainActivity3 : MvpAppCompatActivity(), IItemWeatherView {
     @SuppressLint("SetTextI18n")
     override fun setDataView(itemWeatherData: ItemWeatherData) {
 
-        findViewById<RelativeLayout>(R.id.mainContainer).visibility = View.VISIBLE
+        findViewById<LinearLayout>(R.id.mainContainer).visibility = View.VISIBLE
 
         findViewById<TextView>(R.id.address).text = itemWeatherData.name + ", " + itemWeatherData.sys!!.country
         city = itemWeatherData.name.toString().split(" ")[0]
@@ -154,12 +155,12 @@ class MainActivity3 : MvpAppCompatActivity(), IItemWeatherView {
 
         println(iconUrl)
 
-        Picasso.with(this).load(iconUrl).error(R.drawable.sunrise).into(findViewById<ImageView>(R.id.weatherIcon))
+        Picasso.with(this).load(iconUrl).error(R.drawable.error).into(findViewById<ImageView>(R.id.weatherIcon))
     }
 
     override fun errorMessage(message: String) {
         loadingIndicator?.visibility = View.GONE
-        findViewById<RelativeLayout>(R.id.mainContainer).visibility = View.GONE
+        findViewById<LinearLayout>(R.id.mainContainer).visibility = View.GONE
     }
 
     override fun hideLoadingIndicator() {

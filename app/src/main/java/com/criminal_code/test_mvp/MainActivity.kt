@@ -28,7 +28,7 @@ class MainActivity : MvpAppCompatActivity(), ILoginView {
             loginPresenter.onLogin(email.text.toString(),password.text.toString())
         }
     }
-
+    
     override fun onLoginSuccess(message: String) {
         Toasty.success(this, message,Toast.LENGTH_SHORT).show()
         startActivity(Intent(this, MainActivity3::class.java))
