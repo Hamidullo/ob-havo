@@ -13,6 +13,8 @@ import es.dmoral.toasty.Toasty
 
 class MainActivity : MvpAppCompatActivity(), ILoginView {
 
+    // 38:94:95:C0:CB:7F:BA:88:A0:1A:92:09:81:79:46:F5:20:AE:11:39
+
     @InjectPresenter
     lateinit var loginPresenter: LoginPresenter
 

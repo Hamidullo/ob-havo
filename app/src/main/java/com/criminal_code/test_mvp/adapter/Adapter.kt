@@ -47,12 +47,12 @@ class Adapter(context: Context?, weathers: List<ListWeather?>?) : ArrayAdapter<L
         maxTempTextView.text = weather.main!!.temp_max.toString()
         minTempTextView.text = weather.main!!.temp_min.toString()
 
-        val iconUrl = "http://openweathermap.org/img/wn/" + weather.weather[0]!!.icon + "@2x.png"
+        val iconUrl = "https://openweathermap.org/img/wn/" + weather.weather[0]!!.icon + "@2x.png"
         //  http://openweathermap.org/img/wn/01d@2x.png
 
         println(iconUrl)
 
-        Picasso.with(context).load(iconUrl).error(R.drawable.error).into(iconImageView)
+        Picasso.get().load(iconUrl).error(R.drawable.error).into(iconImageView)
 
         return convertView
     }

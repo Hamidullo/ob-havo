@@ -38,11 +38,11 @@ class MainActivity4 : AppCompatActivity() {
         findViewById<TextView>(R.id.humidityF).text = intent.getBundleExtra("all")!!.getString("humidity") + " %"
         findViewById<TextView>(R.id.about).text = intent.getBundleExtra("all")!!.getString("population")
 
-        val iconUrl = "http://openweathermap.org/img/wn/" + intent.getBundleExtra("all")!!.getString("icon") + "@2x.png"
+        val iconUrl = "https://openweathermap.org/img/wn/" + intent.getBundleExtra("all")!!.getString("icon") + "@2x.png"
 
         println(iconUrl)
 
-        Picasso.with(this).load(iconUrl).error(R.drawable.sunrise).into(findViewById<ImageView>(R.id.weatherIconF))
+        Picasso.get().load(iconUrl).error(R.drawable.error).into(findViewById<ImageView>(R.id.weatherIconF))
 
     }
 }

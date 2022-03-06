@@ -64,7 +64,7 @@
                     android:layout_weight="9.5"
                     android:hint="@string/enter_city"
                     android:textColor="@color/black"
-                    android:textSize="22sp" />
+                    android:textSize="20sp" />
 
                 <ImageButton
                     android:id="@+id/subCity"
@@ -72,7 +72,7 @@
                     android:layout_height="42dp"
                     android:layout_weight="0.5"
                     android:background="@android:color/transparent"
-                    android:src="@drawable/searched" />
+                    android:src="@drawable/find_new" />
 
             </LinearLayout>
 
@@ -136,8 +136,8 @@
 
                 <ImageView
                     android:id="@+id/weatherIcon"
-                    android:layout_width="62dp"
-                    android:layout_height="62dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_gravity="center" />
 
                 <TextView
@@ -180,7 +180,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_margin="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
                         android:gravity="center"
                         android:orientation="vertical">
 
@@ -481,5 +484,19 @@
         android:layout_centerInParent="true"
         android:visibility="gone"
         android:text="@string/error"/>
+
+    <LinearLayout
+        android:id="@+id/mapContainer"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/map_Map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"/>
+
+    </LinearLayout>
 
 </RelativeLayout>
